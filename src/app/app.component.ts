@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
+import { Hero } from './hero';
 
-// 创建Hero对象
-export class Hero {
-  id: number;
-  name: string;
-}
 // 模拟数据
 const HEROES: Hero[] = [
   { id: 11, name: "张三" },
@@ -31,14 +27,7 @@ const HEROES: Hero[] = [
         <span class="badge">{{hero.id}}</span>{{hero.name}}
       </li>
     </ul>
-    <div *ngIf="selectedHero">
-      <h2>{{selectedHero.name}} 英雄详情</h2>
-      <div><label>id: </label>{{selectedHero.id}}</div>
-      <div>
-          <label>name: </label>
-          <input [(ngModel)]="selectedHero.name" placeholder="name"/>
-      </div>
-    </div>
+    <hero-detail [heroDetail]="selectedHero"></hero-detail>
   `,
   styles: [`
     .selected {
@@ -95,6 +84,7 @@ export class AppComponent  {
   title = '英雄列表:';
   heroes = HEROES;
   selectedHero: Hero;
+
   onSelect(hero: Hero): void {
     this.selectedHero = hero; //将点击的hero赋值给selectedHero
   }

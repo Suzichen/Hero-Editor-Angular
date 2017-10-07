@@ -1,3 +1,4 @@
+// 英雄详情模块 
 import { Component, Input } from '@angular/core';
 import { Hero } from './hero';
 

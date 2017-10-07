@@ -1,3 +1,4 @@
+// 模块管理 
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 // 导入formsModule模块

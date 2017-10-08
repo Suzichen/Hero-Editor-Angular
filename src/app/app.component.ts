@@ -72,7 +72,7 @@ import { HeroService } from './hero.service';
 })
 
 // 业务逻辑
-export class AppComponent  { 
+export class AppComponent implements OnInit  { 
   title = '英雄列表:';
   // heroer = HEROES;
   heroes: Hero[]; // 一个尚未初始化的heroes属性

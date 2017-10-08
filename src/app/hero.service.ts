@@ -21,4 +21,12 @@ export class HeroService {
             setTimeout(() => resolve(this.getHeroes()),2000)
         })
     }
+    
+    getHero(id: number): Promise<Hero> {
+        // 根据id从getHeroes()中过滤英雄列表。
+        return this.getHeroes()
+            .then(heroes => heroes.find(
+                hero => hero.id === id
+            ));
+    }
 }

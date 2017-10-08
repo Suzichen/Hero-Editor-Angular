@@ -1,0 +1,9 @@
+<div *ngIf="heroDetail">
+    <h2>{{heroDetail.name}} 英雄详情</h2>
+    <div><label>id: </label>{{heroDetail.id}}</div>
+    <div>
+        <label>name: </label>
+        <input [(ngModel)]="heroDetail.name" placeholder="name"/>
+    </div>
+    <button (click)="goBack()">返回</button>
+</div>

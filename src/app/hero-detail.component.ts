@@ -1,24 +1,39 @@
 // 英雄详情模块 
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { ActivatedRoute, ParamMap } from "@angular/router";
+import { Location } from "@angular/common";
+import "rxjs/add/operator/switchMap";
+
 import { Hero } from './hero';
+import { HeroService } from './hero.service';
 
 @Component({
     selector: 'hero-detail',
-    template: `
-        <div *ngIf="heroDetail">
-            <h2>{{heroDetail.name}} 英雄详情</h2>
-            <div><label>id: </label>{{heroDetail.id}}</div>
-            <div>
-                <label>name: </label>
-                <input [(ngModel)]="heroDetail.name" placeholder="name"/>
-            </div>
-        </div>
-    `
+    templateUrl: './hero-detail.component.html'
 })
 
-export class HeroDetailComponent {
+export class HeroDetailComponent implements OnInit {
+    constructor(
+        private heroService: HeroService,
+        private route: ActivatedRoute,
+        private location: Location
+    ) {}
     // 通过在hero属性前面加上@Input装饰器，来表明它是一个输入属性
     @Input() heroDetail: Hero;
+
+    ngOnInit(): void {
+        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+        //Add 'implements OnInit' to the class.
+        this.route.paramMap
+            .switchMap((params: ParamMap) =>
+        this.heroService.getHero(+params.get('id')))
+            .subscribe(hero => this.heroDetail = hero);
+    }
+
+    goBack(): void {
+        this.location.back();
+    }
 }
 
 /* 

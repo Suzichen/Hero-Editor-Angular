@@ -10,7 +10,8 @@ import { HeroService } from './hero.service';
 
 @Component({
     selector: 'hero-detail',
-    templateUrl: './hero-detail.component.html'
+    templateUrl: './hero-detail.component.html',
+    styleUrls: [ './hero-detail.component.css' ]
 })
 
 export class HeroDetailComponent implements OnInit {
@@ -20,7 +21,8 @@ export class HeroDetailComponent implements OnInit {
         private location: Location
     ) {}
     // 通过在hero属性前面加上@Input装饰器，来表明它是一个输入属性
-    @Input() heroDetail: Hero;
+    // @Input() heroDetail: Hero;
+    heroDetail: Hero;
 
     ngOnInit(): void {
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.

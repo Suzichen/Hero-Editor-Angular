@@ -1,0 +1,16 @@
+<h2>我的英雄：</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes" 
+    (click)="onSelect(hero)"
+    [class.selected]="hero === selectedHero">
+    <span class="badge">{{hero.id}}</span>{{hero.name}}
+  </li>
+</ul>
+<div *ngIf="selectedHero">
+  <h2>
+    <!-- 管道操作符|能干预表达式绑定的过程 -->
+    <!-- 这里把字母转换成了大写 -->
+    {{selectedHero.name | uppercase}} 是我的英雄
+  </h2>
+  <button (click)="gotoDetail()">显示详情</button>
+</div>
